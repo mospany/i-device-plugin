@@ -1,4 +1,4 @@
-FROM golang:1.22.5 AS builder
+FROM docker.m.daocloud.io/golang:1.22.5 AS builder
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . .
 # Build the project
 RUN CGO_ENABLED=0 GOOS=linux go build -o bin/i-device-plugin cmd/main.go
 
-FROM alpine:latest
+FROM docker.m.daocloud.io/alpine:latest
 
 WORKDIR /root/
 
